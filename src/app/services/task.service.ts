@@ -15,6 +15,14 @@ export class TaskService {
     return this.http.post(this.pathUrl, task);
   }
 
+  public updateUsingPut(task: {id, title, status}): Observable<any> {
+    return this.http.put(`${this.pathUrl}?idTask=${task.id}`, task);
+  }
+
+  public deleteAllUsingDelete(id: string): Observable<any> {
+    return this.http.delete(`${this.pathUrl}/${id}`);
+  }
+
   public findAllUsingGet(): Observable<any> {
     return this.http.get(this.pathUrl);
   }

@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3 col-sm-12">
+    <h1 class="text-center">Tasks</h1>
+    <div class="text-center">
+      <button #childModal type="button" class="btn btn-light m-3" data-toggle="modal" data-target="#exampleModal">Add Task</button>
+    </div>
+    <div class="list-group d-flex flex-row" *ngFor="let task of tasks">
+      <div class="list-group-item flex-grow-1 mb-3">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">{{task.title}}</h5>
+          <small>3 days ago</small>
+        </div>
+        <p class="mb-1"></p>
+        <div class="d-flex justify-content-between">
+          <small>Donec id elit non mi porta.</small>
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-secondary">Finish</button>
+            <button type="button" class="btn btn-outline-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+              <span class="dropdown-item" (click)="update(task)">Edit</span>
+              <span class="dropdown-item" (click)="delete(task.id)">Delete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formulario">
+            <div class="form-group">
+              <label for="titletag">Title</label>
+              <input formControlName="title" type="text" class="form-control" id="titletag" aria-describedby="titleHelp">
+              <small id="titleHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button  (click)="cancel()" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button (click)="saveOrUpdate()" type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

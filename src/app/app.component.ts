@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {TaskService} from './services/task.service';
 
 @Component({
@@ -6,13 +6,6 @@ import {TaskService} from './services/task.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent{
   title = 'tasklist';
-
-  constructor(private service: TaskService) {
-  }
-
-  ngOnInit(): void {
-    this.service.findAllUsingGet().subscribe(e => console.log(e));
-  }
 }
