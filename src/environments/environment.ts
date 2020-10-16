@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'https://tasklist-api-20.herokuapp.com'
+  url: 'http://localhost:9000/'
 };
 
 /*

@@ -11,11 +11,11 @@ export class TaskService {
 
   public pathUrl = `${environment.url}/task`;
 
-  public createUsingPost(task: {title, status}): Observable<any> {
+  public createUsingPost(task: {title, description}): Observable<any> {
     return this.http.post(this.pathUrl, task);
   }
 
-  public updateUsingPut(task: {id, title, status}): Observable<any> {
+  public updateUsingPut(task: {id, title, description}): Observable<any> {
     return this.http.put(`${this.pathUrl}?idTask=${task.id}`, task);
   }
 
@@ -25,5 +25,9 @@ export class TaskService {
 
   public findAllUsingGet(): Observable<any> {
     return this.http.get(this.pathUrl);
+  }
+
+  public changeStatusUsingPut(task: {id}): Observable<any> {
+    return this.http.put(`${this.pathUrl}/changeStatus?idTask=${task.id}`, { });
   }
 }
